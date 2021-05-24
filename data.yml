@@ -1,0 +1,59 @@
+---
+domains:
+  - domain: yandex.ru
+    is_active: true
+
+  - domain: google.com
+    is_active: true
+
+  - domain: pochta.ru
+    is_active: true
+
+mailboxes:
+  - domain: yandex.ru
+    lp: admin
+    quota: 100
+    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+
+  - domain: yandex.ru
+    lp: webmaster
+    quota: 100
+    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+
+  - domain: google.com
+    lp: admin
+    quota: 100
+    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+
+  - domain: google.com
+    lp: webmaster
+    quota: 100
+    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+
+  - domain: google.com
+    lp: info
+    quota: 100
+    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+
+aliases:
+  - domain: google.com
+    lp: abuse
+    goto: info@google.com
+
+  - domain: google.com
+    lp: hostmaster
+    goto: webmaster@google.com
+
+  - domain: yandex.com
+    lp: abuse
+    goto: admin@google.com
+
+
+#maillists:
+#  - id
+#  - domain
+#  - lp
+#subscriptions:
+#  - mail
+#  - maillist_id
+...

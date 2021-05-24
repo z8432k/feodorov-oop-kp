@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "feodorov_oop_kp"
+require "feodorov_oop_kp/pry"
+
+puts "Starting..."
+
+Pry.config.commands.import FeodorovOopKp::Pry::COMMANDS
+Pry.start
+
+
