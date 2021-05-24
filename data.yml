@@ -1,59 +1,55 @@
 ---
-domains:
-  - domain: yandex.ru
-    is_active: true
-
-  - domain: google.com
-    is_active: true
-
-  - domain: pochta.ru
-    is_active: true
-
-mailboxes:
-  - domain: yandex.ru
-    lp: admin
-    quota: 100
-    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
-
-  - domain: yandex.ru
-    lp: webmaster
-    quota: 100
-    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
-
-  - domain: google.com
-    lp: admin
-    quota: 100
-    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
-
-  - domain: google.com
-    lp: webmaster
-    quota: 100
-    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
-
-  - domain: google.com
-    lp: info
-    quota: 100
-    password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
-
-aliases:
-  - domain: google.com
-    lp: abuse
-    goto: info@google.com
-
-  - domain: google.com
-    lp: hostmaster
-    goto: webmaster@google.com
-
-  - domain: yandex.com
-    lp: abuse
-    goto: admin@google.com
-
-
-#maillists:
-#  - id
-#  - domain
-#  - lp
-#subscriptions:
-#  - mail
-#  - maillist_id
-...
+:domains:
+- !ruby/object:FeodorovOopKp::Domain
+  domain: yandex.ru
+  is_active: true
+- !ruby/object:FeodorovOopKp::Domain
+  domain: google.com
+  is_active: true
+- !ruby/object:FeodorovOopKp::Domain
+  domain: pochta.ru
+  is_active: true
+:mailboxes:
+- !ruby/object:FeodorovOopKp::Mailbox
+  domain: yandex.ru
+  lp: admin
+  quota: 100
+  password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+- !ruby/object:FeodorovOopKp::Mailbox
+  domain: yandex.ru
+  lp: webmaster
+  quota: 100
+  password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+- !ruby/object:FeodorovOopKp::Mailbox
+  domain: google.com
+  lp: admin
+  quota: 100
+  password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+- !ruby/object:FeodorovOopKp::Mailbox
+  domain: google.com
+  lp: webmaster
+  quota: 100
+  password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+- !ruby/object:FeodorovOopKp::Mailbox
+  domain: google.com
+  lp: info
+  quota: 100
+  password: fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7
+- !ruby/object:FeodorovOopKp::Mailbox
+  domain: google.com
+  lp: alex
+  quota: 100
+  password: 8d23cf6c86e834a7aa6eded54c26ce2bb2e74903538c61bdd5d2197997ab2f72
+:alises:
+- !ruby/object:FeodorovOopKp::Alias
+  domain: google.com
+  lp: abuse
+  goto: info@google.com
+- !ruby/object:FeodorovOopKp::Alias
+  domain: google.com
+  lp: hostmaster
+  goto: webmaster@google.com
+- !ruby/object:FeodorovOopKp::Alias
+  domain: yandex.com
+  lp: abuse
+  goto: admin@google.com

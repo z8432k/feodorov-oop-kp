@@ -34,6 +34,10 @@ module FeodorovOopKp
           puts "Wrong action. Try again."
         end
       end
+
+      command :save, "Save all changes" do
+        App.instance.save
+      end
     end
   end
 end

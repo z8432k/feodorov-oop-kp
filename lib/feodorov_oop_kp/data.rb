@@ -5,15 +5,17 @@ module FeodorovOopKp
 
 
   class Data
+    DATA_FILE = "data.yml".freeze
+
     attr_reader :aliases, :domains, :mailboxes
 
     def initialize
-      raw = YAML.load_file("data.yml")
+      raw = YAML.load_file(DATA_FILE)
         .deep_symbolize_keys!
 
-      @domains = Domain.create raw[:domains]
-      @mailboxes = Mailbox.create raw[:mailboxes]
-      @aliases = Alias.create raw[:aliases]
+      @domains = raw[:domains]
+      @mailboxes = raw[:mailboxes]
+      @aliases = raw[:aliases]
     end
 
     def boxes_of(domain)
@@ -61,6 +63,19 @@ module FeodorovOopKp
         box
 
       box.update_password(old, new)
+    end
+
+    def save
+      puts "Saving..."
+      yaml = YAML.dump({
+        domains: @domains,
+        mailboxes: @mailboxes,
+        alises: @aliases
+      })
+
+      File.open DATA_FILE, "w" do |f|
+        f.puts yaml
+      end
     end
 
     private

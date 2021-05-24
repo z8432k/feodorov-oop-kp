@@ -61,6 +61,10 @@ module FeodorovOopKp
       puts e.message
     end
 
+    def save
+      @data.save
+    end
+
     private
 
     def split_check_box(box)
