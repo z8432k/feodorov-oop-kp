@@ -23,6 +23,15 @@ module FeodorovOopKp
           puts "Wrong action. Try again."
         end
       end
+
+      command :box, "Mailbox operations" do |cmd, box, password|
+        case cmd
+        when "add"
+          App.instance.add_box(box, password)
+        else
+          puts "Wrong action. Try again."
+        end
+      end
     end
   end
 end

@@ -31,9 +31,22 @@ module FeodorovOopKp
         puts e.message
     end
 
-    def add_box(domain, local_part, password)
-      box = Mailbox.new(domain: domain, lp: local_part, quota: 100)
-      #box.set
+    def add_box(box, password)
+      lp, domain = box.split("@")
+
+      raise Error.new("Local part not found") unless
+        lp
+
+      raise Error.new("Domain not found") unless
+        domain
+
+      raise Error.new("Password not found") unless
+        password
+
+      @data.add_box(domain, lp, password)
+      puts "Ok"
+    rescue => e
+      puts e.message
 
       #@data.add_strategy = Data::AddBoxStrategy.new
       #@data.add()

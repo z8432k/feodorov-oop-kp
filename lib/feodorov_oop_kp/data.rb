@@ -22,6 +22,12 @@ module FeodorovOopKp
       end
     end
 
+    def box_exists?(domain, lp)
+      @mailboxes.any? do |b|
+        b.domain == domain && b.lp == lp
+      end
+    end
+
     def domain_exists?(domain)
       exists?(@domains, domain.domain, :domain)
     end
@@ -33,6 +39,16 @@ module FeodorovOopKp
         domain_exists?(domain)
 
       @domains.push(domain)
+    end
+
+    def add_box(domain, lp, password)
+      box = Mailbox.new(domain: domain, lp: lp, quota: 100)
+      box.password = password
+
+      raise Error.new("Box already exists.") if
+        box_exists?(domain, lp)
+
+      @mailboxes.push(box)
     end
 
     private
