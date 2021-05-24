@@ -33,4 +33,10 @@ RSpec.describe Data do
 
     app.add_box("alex@yandex.ru", "123")
   end
+
+  it "check exists_domain3" do
+    app = FeodorovOopKp::App::instance
+
+    app.set_password("alex@yandex.ru", "123", "321")
+  end
 end

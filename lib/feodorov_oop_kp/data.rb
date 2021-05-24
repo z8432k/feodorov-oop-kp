@@ -23,9 +23,12 @@ module FeodorovOopKp
     end
 
     def box_exists?(domain, lp)
-      @mailboxes.any? do |b|
-        b.domain == domain && b.lp == lp
-      end
+      !get_box(domain, lp).nil?
+    end
+
+    def get_box(domain, lp)
+      @mailboxes.filter { |b| b.domain == domain && b.lp == lp }
+                .first
     end
 
     def domain_exists?(domain)
@@ -49,6 +52,15 @@ module FeodorovOopKp
         box_exists?(domain, lp)
 
       @mailboxes.push(box)
+    end
+
+    def set_password(domain, lp, old, new)
+      box = get_box(domain, lp)
+
+      raise Error.new("Box not found.") unless
+        box
+
+      box.update_password(old, new)
     end
 
     private

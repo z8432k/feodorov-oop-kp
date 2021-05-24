@@ -24,10 +24,12 @@ module FeodorovOopKp
         end
       end
 
-      command :box, "Mailbox operations" do |cmd, box, password|
+      command :box, "Mailbox operations" do |cmd, box, a1, a2|
         case cmd
         when "add"
-          App.instance.add_box(box, password)
+          App.instance.add_box(box, a1)
+        when "pass"
+          App.instance.set_password(box, a1, a2)
         else
           puts "Wrong action. Try again."
         end

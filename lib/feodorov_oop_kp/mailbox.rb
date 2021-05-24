@@ -19,7 +19,23 @@ module FeodorovOopKp
     end
 
     def password=(password)
-      @password = Digest::SHA256.hexdigest(password)
+      @password = hash(password)
+    end
+
+    def check_password(pass)
+      raise Error.new("Wrong old password") unless
+        @password == hash(pass)
+    end
+
+    def update_password(old, new)
+      check_password(old)
+      self.password = new
+    end
+
+    private
+
+    def hash(pass)
+      Digest::SHA256.hexdigest(pass)
     end
   end
 end

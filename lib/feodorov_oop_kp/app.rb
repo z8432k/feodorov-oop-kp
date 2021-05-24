@@ -32,13 +32,7 @@ module FeodorovOopKp
     end
 
     def add_box(box, password)
-      lp, domain = box.split("@")
-
-      raise Error.new("Local part not found") unless
-        lp
-
-      raise Error.new("Domain not found") unless
-        domain
+      lp, domain = split_check_box(box)
 
       raise Error.new("Password not found") unless
         password
@@ -50,6 +44,35 @@ module FeodorovOopKp
 
       #@data.add_strategy = Data::AddBoxStrategy.new
       #@data.add()
+    end
+
+    def set_password(box, old, new)
+      lp, domain = split_check_box(box)
+
+      raise Error.new("Old password not found") unless
+        old
+
+      raise Error.new("New password not found") unless
+        new
+
+      @data.set_password(domain, lp, old, new)
+      puts "Ok"
+    rescue => e
+      puts e.message
+    end
+
+    private
+
+    def split_check_box(box)
+      lp, domain = box.split("@")
+
+      raise Error.new("Local part not found") unless
+        lp
+
+      raise Error.new("Domain not found") unless
+        domain
+
+      [lp, domain]
     end
   end
 end
