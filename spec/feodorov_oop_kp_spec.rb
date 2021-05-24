@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require_relative '../lib/feodorov_oop_kp/save_command'
 
 RSpec.describe FeodorovOopKp do
   it "has a version number" do
@@ -38,5 +38,10 @@ RSpec.describe Data do
     app = FeodorovOopKp::App::instance
 
     app.set_password("alex@yandex.ru", "123", "321")
+  end
+
+  it "save" do
+    command = FeodorovOopKp::SaveCommand.new(FeodorovOopKp::App::instance)
+    command.execute
   end
 end

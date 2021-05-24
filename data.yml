@@ -40,16 +40,4 @@
   lp: alex
   quota: 100
   password: 8d23cf6c86e834a7aa6eded54c26ce2bb2e74903538c61bdd5d2197997ab2f72
-:alises:
-- !ruby/object:FeodorovOopKp::Alias
-  domain: google.com
-  lp: abuse
-  goto: info@google.com
-- !ruby/object:FeodorovOopKp::Alias
-  domain: google.com
-  lp: hostmaster
-  goto: webmaster@google.com
-- !ruby/object:FeodorovOopKp::Alias
-  domain: yandex.com
-  lp: abuse
-  goto: admin@google.com
+:alises: 

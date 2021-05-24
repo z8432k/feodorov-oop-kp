@@ -1,14 +1,20 @@
 require "pry"
 
 module FeodorovOopKp
+  autoload :SaveCommand
+  autoload :ListDomainsCommand
+
   module Pry
+    save_command = SaveCommand.new(App.instance)
+    list_domains = ListDomainsCommand.new(App.instance)
+
     COMMANDS = ::Pry::CommandSet.new do
       command "hello", "Send Hello." do |name|
         puts "Hello, #{name}!"
       end
 
       command :domains, "List domains" do
-        App.instance.print_domains
+        list_domains.execute
       end
 
       command :boxes, "List mailboxes of domain" do |domain|
@@ -36,7 +42,7 @@ module FeodorovOopKp
       end
 
       command :save, "Save all changes" do
-        App.instance.save
+        save_command.execute
       end
     end
   end
