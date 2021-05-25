@@ -44,6 +44,10 @@ module FeodorovOopKp
       command :save, "Save all changes" do
         save_command.execute
       end
+
+      command :aliases, "Print aliases" do
+        App.instance.print_aliases
+      end
     end
   end
 end

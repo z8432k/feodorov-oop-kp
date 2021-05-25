@@ -7,6 +7,8 @@ require "feodorov_oop_kp/pry"
 
 puts "Starting..."
 
+FeodorovOopKp::App.instance.print_menu
+
 Pry.config.commands.import FeodorovOopKp::Pry::COMMANDS
 Pry.start
 

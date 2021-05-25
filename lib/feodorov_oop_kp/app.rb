@@ -16,17 +16,35 @@ module FeodorovOopKp
     def print_domains
       ap @data.domains
               .map(&:to_s)
+
+      print_menu
     end
 
     def print_boxes(domain)
       ap @data.boxes_of(domain)
               .map(&:to_s)
+
+      print_menu
+    end
+
+    def print_aliases
+      it = @data.aliases.each
+
+      loop do
+        begin
+          al = it.next
+          puts "FROM: #{al.lp}@#{al.domain} TO: #{al.goto}"
+        rescue StopIteration
+          return
+        end
+      end
     end
 
     def add_domain(domain_name)
       #@data.add_strategy = Data::AddDomainStrategy.new
         @data.add_domain(domain_name)
         puts "Ok"
+      print_menu
       rescue => e
         puts e.message
     end
@@ -39,6 +57,7 @@ module FeodorovOopKp
 
       @data.add_box(domain, lp, password)
       puts "Ok"
+      print_menu
     rescue => e
       puts e.message
 
@@ -57,12 +76,25 @@ module FeodorovOopKp
 
       @data.set_password(domain, lp, old, new)
       puts "Ok"
+      print_menu
     rescue => e
       puts e.message
     end
 
     def save
       @data.save
+      print_menu
+    end
+
+    def print_menu
+      puts ""
+      puts "Основное меню:"
+      puts "* domains - Вывести список доменов."
+      puts "* boxes domain - Вывести список ящиков для домена."
+      puts "* domain add name - Добавить домен."
+      puts "* box add name - Добавить ящик для домена."
+      puts "* box pass box old new - Установить пароль для ящика."
+      puts "* save - Сохранить изменения"
     end
 
     private
@@ -78,5 +110,6 @@ module FeodorovOopKp
 
       [lp, domain]
     end
+
   end
 end

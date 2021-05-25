@@ -44,4 +44,8 @@ RSpec.describe Data do
     command = FeodorovOopKp::SaveCommand.new(FeodorovOopKp::App::instance)
     command.execute
   end
+
+  it "aliases" do
+    FeodorovOopKp::App.instance.print_aliases
+  end
 end
