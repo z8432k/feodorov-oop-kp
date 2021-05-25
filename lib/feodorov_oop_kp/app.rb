@@ -1,5 +1,6 @@
 require 'singleton'
 require "yaml"
+require "json"
 
 
 module FeodorovOopKp
@@ -10,7 +11,6 @@ module FeodorovOopKp
 
     def initialize
       @data = Data.new
-      puts @data
     end
 
     def print_domains
@@ -95,6 +95,12 @@ module FeodorovOopKp
       puts "* box add name - Добавить ящик для домена."
       puts "* box pass box old new - Установить пароль для ящика."
       puts "* save - Сохранить изменения"
+    end
+
+    def boxes_json
+      boxes = @data.mailboxes
+
+      JSON.dump(boxes)
     end
 
     private
